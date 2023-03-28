@@ -1,17 +1,17 @@
+import React, { useContext } from 'react';
 import './App.css';
 import Home from './Components/Home';
-import Footer from './Components/Footer/Footer';
+import Login from './Components/Auth/Login';
+import { AuthContext } from './Components/Context/AuthContext';
 
 function App() {
+  const { state } = useContext(AuthContext);
 
-  return (
+  if (!state.isLoggedIn)
+    return <Login />;
+  else
+    return <Home />;
 
-    <div className="App">
-      <Home />
-
-      {/* <Footer style={{ backgroundColor: "blue", height: 50 }}/>     */}
-    </div>
-  );
 }
 
 export default App;
