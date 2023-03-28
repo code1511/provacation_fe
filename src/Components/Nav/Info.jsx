@@ -1,9 +1,15 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Container, Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
+import { AuthContext } from "../Context/AuthContext";
 
 const Info = () => {
+    const { logout } = useContext(AuthContext);
+    const handleLogout = (e) => {
+        e.preventDefault();
+        logout();
+    }
     return (
         <Container fluid>
             <Nav className="me-auto">
@@ -24,6 +30,7 @@ const Info = () => {
                         <p style={{ margin: 0, padding: "0 10px" }}>Search</p>
                     </Button>
                 </Form>
+                <Nav.Link href="#home" style={{ color: "white" }} onClick={handleLogout}>Log out</Nav.Link>
             </Nav>
         </Container>
     )
